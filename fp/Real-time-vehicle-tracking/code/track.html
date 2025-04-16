@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FleetTrack - Real-Time Tracking</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+    }
+    #map {
+      height: 60vh;
+      width: 100%;
+      border-radius: 1rem;
+    }
+    .navbar a:hover {
+      color: #f97316;
+      transform: scale(1.05);
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-black bg-opacity-70 text-white">
+
+  <!-- Page Wrapper (80% Width) -->
+  <div class="w-4/5 mx-auto">
+
+    <!-- Navigation Bar -->
+    <header class="bg-black text-white p-4 flex justify-between items-center shadow-md rounded-b-lg">
+      <div class="flex items-center">
+        <span class="ml-2 text-xl font-bold">FleetTrack</span>
+      </div>
+      <nav class="space-x-4 navbar">
+        <a class="hover:text-orange-400 transition" href="inde.php">Home</a>
+        <a class="hover:text-orange-400 transition" href="profile.html">Sign Up</a>
+        <a class="hover:text-orange-400 transition" href="contact.html">Login</a>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="p-6">
+      <h1 class="text-3xl font-bold mb-4 text-center">Real-Time Vehicle Tracking</h1>
+
+      <!-- Map -->
+      <div id="map" class="shadow-lg border-2 border-gray-200 mb-6"></div>
+
+      <!-- Dummy Vehicle ID Tracking -->
+      <div class="mt-6 flex flex-col items-center">
+        <input 
+          type="text" 
+          id="vehicleInput"
+          placeholder="Enter Vehicle ID (e.g., VEH123)"
+          class="p-3 w-80 rounded-lg text-black shadow-md border border-gray-300 mb-4"
+        />
+        <button 
+          onclick="trackByVehicleId()"
+          class="bg-green-500 text-white font-semibold px-6 py-2 rounded-lg shadow-md hover:bg-green-600 transition"
+        >
+          Track by Vehicle ID
+        </button>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-80 text-white py-10 mt-10 rounded-t-lg">
+      <div class="text-center">
+        <p class="text-2xl font-semibold mb-3">FleetTrack - Track Smarter, Not Harder</p>
+        <p class="text-base mb-6">&copy; 2025 FleetTrack. All rights reserved.</p>
+        <div class="flex justify-center space-x-8">
+          <a href="#" class="text-orange-500 hover:text-orange-400 transition">
+            <i class="fab fa-google text-3xl"></i>
+          </a>
+          <a href="#" class="text-orange-500 hover:text-orange-400 transition">
+            <i class="fab fa-facebook text-3xl"></i>
+          </a>
+          <a href="#" class="text-orange-500 hover:text-orange-400 transition">
+            <i class="fab fa-twitter text-3xl"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </div> <!-- End of Wrapper -->
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const defaultLatLng = [28.6139, 77.2090]; // New Delhi
+    const map = L.map('map').setView(defaultLatLng, 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const vehicleIcon = L.icon({
+      iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+      iconSize: [40, 40],
+      iconAnchor: [20, 40],
+      popupAnchor: [0, -40]
+    });
+
+    let marker = L.marker(defaultLatLng, { icon: vehicleIcon }).addTo(map)
+      .bindPopup('Vehicle is here (New Delhi)').openPopup();
+
+    function trackByVehicleId() {
+      const vehicleId = document.getElementById("vehicleInput").value.trim().toUpperCase();
+      if (vehicleId === "VEH123") {
+        alert("Vehicle ID found! Starting location tracking via geolocation (simulated)");
+
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const ipLat = position.coords.latitude;
+              const ipLng = position.coords.longitude;
+
+              marker.setLatLng([ipLat, ipLng])
+                .bindPopup(`Tracking Vehicle: ${vehicleId}`).openPopup();
+              map.setView([ipLat, ipLng], 15);
+
+              setInterval(() => {
+                // Simulate movement by generating random offsets
+                const latOffset = (Math.random() - 0.5) * 0.001;
+                const lngOffset = (Math.random() - 0.5) * 0.001;
+                const newLat = marker.getLatLng().lat + latOffset;
+                const newLng = marker.getLatLng().lng + lngOffset;
+                marker.setLatLng([newLat, newLng]);
+                map.panTo([newLat, newLng]); // Move the map view to the new position
+              }, 3000);
+            },
+            () => {
+              alert("Unable to fetch location.");
+            }
+          );
+        } else {
+          alert("Geolocation not supported.");
+        }
+      } else {
+        alert("Vehicle ID not found!");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - FleetTrack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Slide-in animation */
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-in {
+            opacity: 0; /* Initially hidden */
+            transform: translateX(-100%); /* Start off-screen */
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+
+        .slide-in.visible {
+            opacity: 1; /* Make visible */
+            transform: translateX(0); /* Slide into view */
+        }
+
+        /* Scale-in animation */
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .scale-in {
+            animation: scaleIn 1s ease-out;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="bg-gray-800 shadow-2xl p-4 flex justify-between items-center fixed w-full z-10">
+        <div class="text-2xl font-bold text-gray-300">FleetTrack</div>
+        <nav class="hidden md:flex space-x-8 text-white">
+            <a href="index.html" class="hover:text-orange-500 transition">Home</a>
+            <a href="sign.html" class="hover:text-orange-500 transition">Sign Up</a>
+            <a href="login.html" class="hover:text-orange-500 transition">Login</a>
+        </nav>
+    </header>
+
+    <!-- Contact Section -->
+    <main class="pt-20">
+        <section class="relative bg-blue-800 h-[400px] flex items-center justify-center text-center">
+            <div class="text-white max-w-2xl slide-in">
+                <h1 class="text-4xl font-bold mb-4">Get in Touch with Us</h1>
+                <p class="text-lg">We’re here to help you with all your fleet tracking needs.</p>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="py-12 bg-gray-100">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
+                <form class="bg-white p-8 rounded-lg shadow-lg scale-in">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Name -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" 
+                                class="w-full p-3 rounded-lg bg-gray-100 text-gray-800 placeholder-gray-400 border border-gray-300 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400" 
+                                required>
+                        </div>
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Your Email" 
+                                class="w-full p-3 rounded-lg bg-gray-100 text-gray-800 placeholder-gray-400 border border-gray-300 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400" 
+                                required>
+                        </div>
+                    </div>
+                    <!-- Subject -->
+                    <div class="mt-6">
+                        <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Subject" 
+                            class="w-full p-3 rounded-lg bg-gray-100 text-gray-800 placeholder-gray-400 border border-gray-300 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400" 
+                            required>
+                    </div>
+                    <!-- Message -->
+                    <div class="mt-6">
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Your Message" 
+                            class="w-full p-3 rounded-lg bg-gray-100 text-gray-800 placeholder-gray-400 border border-gray-300 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400" 
+                            required></textarea>
+                    </div>
+                    <!-- Submit Button -->
+                    <div class="mt-6 text-center">
+                        <button type="submit" 
+                            class="bg-orange-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-orange-600 transition">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contact Details -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-3xl font-bold text-center mb-8">Other Ways to Contact Us</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                    <!-- Phone Numbers -->
+                    <div class="bg-gray-100 p-8 rounded-lg shadow-lg slide-in">
+                        <h3 class="text-xl font-bold mb-4">Phone Numbers</h3>
+                        <p class="text-gray-600">North America: <a href="tel:+1234567890" class="text-orange-500">+1 234 567 890</a></p>
+                        <p class="text-gray-600">Europe: <a href="tel:+441234567890" class="text-orange-500">+44 123 456 7890</a></p>
+                        <p class="text-gray-600">Asia: <a href="tel:+911234567890" class="text-orange-500">+91 123 456 7890</a></p>
+                    </div>
+                    <!-- Email -->
+                    <div class="bg-gray-100 p-8 rounded-lg shadow-lg slide-in">
+                        <h3 class="text-xl font-bold mb-4">Email</h3>
+                        <p class="text-gray-600">Support: <a href="mailto:support@fleettrack.com" class="text-orange-500">support@fleettrack.com</a></p>
+                        <p class="text-gray-600">Sales: <a href="mailto:sales@fleettrack.com" class="text-orange-500">sales@fleettrack.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p class="text-lg font-semibold mb-4">FleetTrack - Real-Time Vehicle Tracking</p>
+            <p class="text-sm mb-6">&copy; 2025 FleetTrack. All rights reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-orange-400 transition">
+                    <i class="fab fa-instagram text-2xl"></i>
+                </a>
+                <a href="https://www.facebook.com" target="_blank" class="text-gray-300 hover:text-orange-400 transition">
+                    <i class="fab fa-facebook text-2xl"></i>
+                </a>
+                <a href="https://www.twitter.com" target="_blank" class="text-gray-300 hover:text-orange-400 transition">
+                    <i class="fab fa-twitter text-2xl"></i>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" class="text-gray-300 hover:text-orange-400 transition">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const slideInElements = document.querySelectorAll(".slide-in");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            });
+
+            slideInElements.forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,296 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Us - FleetTrack</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+        <style>
+            /* Slide-in animation */
+            @keyframes slideInFromLeft {
+                0% {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+
+            .slide-in {
+                opacity: 0; /* Initially hidden */
+                transform: translateX(-100%); /* Start off-screen */
+                transition: transform 1s ease-out, opacity 1s ease-out;
+            }
+
+            .slide-in.visible {
+                opacity: 1; /* Make visible */
+                transform: translateX(0); /* Slide into view */
+            }
+
+            /* Scale-in animation */
+            @keyframes scaleIn {
+                0% {
+                    transform: scale(0.5);
+                    opacity: 0;
+                }
+                100% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+
+            .scale-in {
+                animation: scaleIn 1s ease-out;
+            }
+
+            /* Smooth transition for hover effects */
+            a, button, input, textarea {
+                transition: all 0.3s ease-in-out;
+            }
+
+            /* Navbar Links Hover Effect */
+            nav a:hover {
+                color: #d1d5db; /* Light gray */
+                transform: scale(1.1); /* Slight zoom */
+            }
+
+            /* Button Hover Effect */
+            button:hover {
+                background-color: #319795; /* Darker teal */
+                transform: translateY(-2px); /* Lift up */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+            }
+
+            /* Input Fields Focus Effect */
+            input:focus, textarea:focus {
+                border-color: #319795; /* Teal border */
+                box-shadow: 0 0 5px rgba(49, 151, 149, 0.5); /* Glow effect */
+            }
+
+            /* Contact Us Box Animation */
+            .contact-box {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            }
+
+            .contact-box.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Other Ways to Contact Us Animation */
+            .other-ways {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            }
+
+            .other-ways.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            /* Slide-in from left animation */
+            @keyframes slideInFromLeft {
+                0% {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+
+            /* Apply animation to the banner heading */
+            .banner-heading {
+                opacity: 0; /* Initially hidden */
+                transform: translateX(-100%); /* Start off-screen */
+                animation: slideInFromLeft 1s ease-out forwards; /* Trigger animation */
+            }
+        </style>
+    </head>
+    <body class="bg-white text-gray-800">
+        <!-- Header Section -->
+        <header class="absolute top-0 left-0 w-full z-10">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <div class="text-2xl font-bold text-white">
+                    FleetTrack
+                </div>
+                <nav class="space-x-4">
+                    <a class="text-white hover:text-gray-300" href="inde.php">HOME</a>
+                    <a class="text-white hover:text-gray-300" href="price.html">PRICING</a>
+
+                    <a class="text-white hover:text-gray-300" href="price.html">YOUR PROFILE</a>
+                    <a class="text-white hover:text-gray-300" href="pr.html">OUR PRIVACY POLICY</a>
+                    <a class="text-white hover:text-gray-300" href="t.html">OUR TERMS & CONDITIONS</a>
+                </nav>
+                <a class="bg-blue-600 text-white px-4 py-2 rounded" href="sign.html">
+                    GET STARTED
+                </a>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="relative">
+            <img 
+                alt="Man with headset smiling while working on a computer" 
+                class="w-full h-[500px] object-cover"
+                src="/Real-time-vehicle-tracking/images/women.webp" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-75"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <h1 class="text-white text-4xl font-bold banner-heading">Get in Touch with Us</h1>
+            </div>
+        </section>
+
+        <!-- Contact Us Heading -->
+        <h2 class="text-center text-3xl font-bold text-blue-900 mt-12 mb-8">Contact Us</h2>
+
+        
+        <!-- Contact Us Box -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-4xl mx-auto mt-8 mb-16 contact-box">
+            <div class="bg-blue-500 py-4 px-6 flex justify-between items-center">
+                <div class="text-white text-lg font-bold">
+                    Get in Touch with Us
+                </div>
+                <div class="space-x-4">
+                    <span class="text-white">
+                        <i class="fas fa-circle"></i>
+                    </span>
+                    <span class="text-white">
+                        <i class="fas fa-circle"></i>
+                    </span>
+                    <span class="text-white">
+                        <i class="fas fa-circle"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row">
+                <!-- Form Section -->
+                <div class="p-6 flex-1">
+                    <form class="space-y-4">
+                        <div class="relative">
+                            <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input class="pl-10 pr-4 py-2 w-full rounded-full bg-gray-100 focus:outline-none" placeholder="Name" type="text" />
+                        </div>
+                        <div class="relative">
+                            <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input class="pl-10 pr-4 py-2 w-full rounded-full bg-gray-100 focus:outline-none" placeholder="Email" type="email" />
+                        </div>
+                        <div class="relative">
+                            <i class="fas fa-tag absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input class="pl-10 pr-4 py-2 w-full rounded-full bg-gray-100 focus:outline-none" placeholder="Subject" type="text" />
+                        </div>
+                        <textarea class="pl-4 pr-4 py-2 w-full rounded-lg bg-gray-100 focus:outline-none h-32" placeholder="Message"></textarea>
+                        <button class="w-full py-2 rounded-full bg-teal-500 text-white font-bold" type="submit">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                <!-- Illustration Section -->
+                <div class="hidden md:block flex-1 relative">
+                    <img src="/Real-time-vehicle-tracking/images/mes.avif" alt="Illustration of a person holding an envelope and riding a skateboard" class="absolute inset-0 w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2 class="text-center text-3xl font-bold mt-12 mb-8 text-blue-900">Other Ways to Contact Us</h2>
+
+    <!-- Other Ways to Contact Us -->
+    <div class="bg-gradient-to-r from-purple-400 to-blue-400 text-white py-8 px-6 rounded-lg shadow-lg max-w-4xl mx-auto mb-16 other-ways">
+        <div class="space-y-4">
+            <p class="flex items-center">
+                <i class="fas fa-phone-alt text-teal-300 mr-4"></i>
+                <span>Phone Numbers:</span>
+            </p>
+            <ul class="ml-8 space-y-2">
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-teal-300 mr-2"></i>
+                    <span>North America: <a href="tel:+1234567890" class="underline">+1 234 567 890</a></span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-teal-300 mr-2"></i>
+                    <span>Europe: <a href="tel:+441234567890" class="underline">+44 123 456 7890</a></span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-chevron-right text-teal-300 mr-2"></i>
+                    <span>Asia: <a href="tel:+911234567890" class="underline">+91 123 456 7890</a></span>
+                </li>
+            </ul>
+            <p class="flex items-center">
+                <i class="fas fa-envelope text-teal-300 mr-4"></i>
+                <span>Email us at: <a href="mailto:support@fleettrack.com" class="underline">support@fleettrack.com</a></span>
+            </p>
+            <p class="flex items-center">
+                <i class="fas fa-map-marker-alt text-teal-300 mr-4"></i>
+                <span>Visit us at: 123 FleetTrack Lane, Suite 100, New York, NY</span>
+            </p>
+        </div>
+    </div>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-1">
+            <div class="container mx-auto text-center">
+                <p class="text-lg font-semibold ">FleetTrack - Real-Time Vehicle Tracking</p>
+                <p class="text-sm mb-2">&copy; 2025 FleetTrack. All rights reserved.</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://www.https://accounts.google.com/o/oauth2/v2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=token&scope=email%20profile" target="_blank" class="text-orange-500 hover:text-orange-400 transition">
+                        <i class="fab fa-google text-2xl"></i>
+                    </a>
+                    <a href="https://www.facebook.com" target="_blank" class="text-orange-500 hover:text-orange-400 transition">
+                        <i class="fab fa-facebook text-2xl"></i>
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank" class="text-orange-500 hover:text-orange-400 transition">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const slideInElements = document.querySelectorAll(".slide-in");
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                        }
+                    });
+                });
+
+                slideInElements.forEach((el) => observer.observe(el));
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const contactBox = document.querySelector(".contact-box");
+                const otherWays = document.querySelector(".other-ways");
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                        }
+                    });
+                });
+
+                if (contactBox) observer.observe(contactBox);
+                if (otherWays) observer.observe(otherWays);
+            });
+        </script>
+    </body>
+    </html>

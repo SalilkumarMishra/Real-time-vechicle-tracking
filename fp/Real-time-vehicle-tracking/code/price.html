@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans - FleetTrack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Hover animation for pricing cards */
+        .pricing-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Badge for most popular plan */
+        .badge {
+            background: linear-gradient(to right, #f97316, #f59e0b);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 0.25rem;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+
+        /* Toggle button styling */
+        .toggle-button {
+            background: #e5e7eb;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem; /* Increased thickness */
+            width: 250px; /* Adjusted width */
+            cursor: pointer;
+            margin: 0 auto; /* Centered the toggle button */
+        }
+
+        .toggle-button span {
+            flex: 1;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .toggle-button .slider {
+            background: white;
+            border-radius: 9999px;
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-button.active .slider {
+            transform: translateX(100%);
+        }
+
+        /* Custom Plan Section Styling */
+        .cta-box {
+            background-image: url('/images/custom-plan-bg.jpeg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            padding: 2rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            animation: scaleIn 0.8s ease-out;
+            animation-fill-mode: both; /* Ensures the element stays in its final position */
+        }
+
+        .cta-box a {
+            background: white;
+            color: #f97316;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .cta-box a:hover {
+            background: #f97316;
+            color: white;
+        }
+
+        /* Header Links Hover Effect */
+        nav a {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f97316; /* Orange color */
+            transform: scale(1.1); /* Slight zoom */
+        }
+
+        /* Pricing Cards Hover Effect */
+        .pricing-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px); /* Lift up */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add shadow */
+        }
+
+        /* FAQ Boxes Hover Effect */
+        .faq-section div {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .faq-section div:hover {
+            transform: translateX(10px); /* Slide slightly to the right */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Add shadow */
+        }
+
+        /* Custom Plan Button Hover Effect */
+        .cta-box a {
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .cta-box a:hover {
+            transform: scale(1.1); /* Slight zoom */
+            background: #f97316; /* Orange background */
+            color: white; /* White text */
+        }
+
+        /* Toggle Button Animation */
+        .toggle-button {
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            background: #f59e0b; /* Lighter orange */
+            transform: scale(1.05); /* Slight zoom */
+        }
+
+        /* Slide-in animation */
+        @keyframes slideInFromLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Apply animation to the heading */
+        .slide-in-heading {
+            animation: slideInFromLeft 1s ease-out;
+        }
+
+        /* Apply animation to the paragraph with a delay */
+        .slide-in-paragraph {
+            animation: slideInFromLeft 1s ease-out;
+            animation-delay: 0.5s;
+            animation-fill-mode: both; /* Ensures the element stays in its final position */
+        }
+
+        /* Scale-in animation for the custom plan box */
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.5); /* Start small */
+                opacity: 0; /* Fully transparent */
+            }
+            to {
+                transform: scale(1); /* Full size */
+                opacity: 1; /* Fully visible */
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-black text-white p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <span class="ml-2 text-xl font-bold">FleetTrack</span>
+        </div>
+        <nav class="space-x-4">
+            <a class="text-white hover:text-orange-500 transition" href="inde.php">Home</a>
+            <a class="text-white hover:text-orange-500 transition" href="sign.html">Sign Up</a>
+            <a class="text-white hover:text-orange-500 transition" href="login.php">Login</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="text-center py-12 bg-gradient-to-b from-orange-500 to-white">
+        <!-- Heading with slide-in effect -->
+        <h1 class="text-4xl font-bold mb-4 slide-in-heading">Choose a plan that's right for you.</h1>
+        <!-- Paragraph with slide-in effect and delay -->
+        <p class="text-gray-700 mb-8 slide-in-paragraph">Trusted by small businesses all over the world. No hidden fees or unnecessary data sharing practices.</p>
+
+        <!-- Toggle Button -->
+        <div id="toggle-plans" class="toggle-button relative mb-8">
+            <span>Monthly</span>
+            <span>Annually</span>
+            <div class="slider"></div>
+        </div>
+
+        <!-- Pricing Plans -->
+        <div id="pricing-plans" class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Basic Plan -->
+            <div class="bg-white p-6 rounded-lg shadow-lg pricing-card">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Basic Plan</h2>
+                    <span class="bg-gray-200 text-gray-700 px-2 py-1 rounded-full">Free</span>
+                </div>
+                <p class="text-4xl font-bold mb-2 price" data-monthly="$0/mo" data-annually="$0/mo">$0/mo</p>
+                <p class="text-gray-700 mb-4 description">The basics of everything you need to start tracking your fleet.</p>
+                <button class="bg-yellow-400 text-black px-4 py-2 rounded-full mb-4">Select</button>
+                <ul class="text-left text-gray-700">
+                    <li class="mb-2"><i class="fas fa-check-circle text-green-500 mr-2"></i> Real-Time Tracking</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-green-500 mr-2"></i> Driver Logs</li>
+                    <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Route Optimization</li>
+                </ul>
+            </div>
+
+            <!-- Pro Plan -->
+            <div class="bg-white p-6 rounded-lg shadow-lg pricing-card relative">
+                <div class="badge">Most Popular</div>
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Pro Plan</h2>
+                    <span class="bg-black text-white px-2 py-1 rounded-full">Save 20%</span>
+                </div>
+                <p class="text-4xl font-bold mb-2 price" data-monthly="$49/mo" data-annually="$39/mo">$49/mo</p>
+                <p class="text-gray-700 mb-4 description">Ideal for growing businesses with advanced tracking needs.</p>
+                <button class="bg-green-400 text-black px-4 py-2 rounded-full mb-4">Select</button>
+                <ul class="text-left text-gray-700">
+                    <li class="mb-2"><i class="fas fa-check-circle text-green-500 mr-2"></i> Everything in Basic</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-green-500 mr-2"></i> Driver Behavior Analysis</li>
+                    <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Geofencing</li>
+                </ul>
+            </div>
+
+            <!-- Enterprise Plan -->
+            <div class="bg-white p-6 rounded-lg shadow-lg pricing-card">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Enterprise Plan</h2>
+                    <span class="bg-black text-white px-2 py-1 rounded-full">Save 20%</span>
+                </div>
+                <p class="text-4xl font-bold mb-2 price" data-monthly="$99/mo" data-annually="$79/mo">$99/mo</p>
+                <p class="text-gray-700 mb-4 description">Comprehensive solutions for large-scale fleet management.</p>
+                <button class="bg-green-400 text-black px-4 py-2 rounded-full mb-4">Select</button>
+                <ul class="text-left text-gray-700">
+                    <li class="mb-2"><i class="fas fa-check-circle text-green-500 mr-2"></i> Everything in Pro</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-green-500 mr-2"></i> Custom Integrations</li>
+                    <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Dedicated Support</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Custom Plan Section -->
+        <div class="cta-box mt-12 max-w-4xl mx-auto relative bg-gradient-to-r from-orange-400 to-yellow-300 text-white p-8 rounded-lg shadow-lg">
+            <div class="relative z-10 text-center">
+                <h2 class="text-3xl font-bold mb-4">Need a Custom Plan?</h2>
+                <p class="mb-6 text-lg">If none of our plans fit your needs, we can create a custom plan tailored to your business.</p>
+                <a href="contact.html" class="bg-white text-orange-500 px-6 py-3 rounded-full font-bold hover:bg-orange-500 hover:text-white transition">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+         <br>
+         <br>
+         
+        <div class="faq-section mt-16 max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-3">
+                <!-- Question 1 -->
+                <div class="bg-white p-3 rounded-md shadow-sm border border-gray-200 hover:shadow-md transition">
+                    <h3 class="text-base font-semibold mb-1">What is FleetTrack?</h3>
+                    <p class="text-gray-600 text-sm">FleetTrack is a fleet management solution that helps businesses track vehicles, optimize routes, and monitor driver behavior in real-time.</p>
+                </div>
+                <!-- Question 2 -->
+                <div class="bg-white p-3 rounded-md shadow-sm border border-gray-200 hover:shadow-md transition">
+                    <h3 class="text-base font-semibold mb-1">Can I switch between monthly and annual plans?</h3>
+                    <p class="text-gray-600 text-sm">Yes, you can switch between monthly and annual plans at any time. Annual plans offer a 20% discount compared to monthly plans.</p>
+                </div>
+                <!-- Question 3 -->
+                <div class="bg-white p-3 rounded-md shadow-sm border border-gray-200 hover:shadow-md transition">
+                    <h3 class="text-base font-semibold mb-1">Do you offer a free trial?</h3>
+                    <p class="text-gray-600 text-sm">Yes, we offer a 14-day free trial for all our plans. You can explore all features before committing to a subscription.</p>
+                </div>
+                <!-- Question 4 -->
+                <div class="bg-white p-3 rounded-md shadow-sm border border-gray-200 hover:shadow-md transition">
+                    <h3 class="text-base font-semibold mb-1">What payment methods do you accept?</h3>
+                    <p class="text-gray-600 text-sm">We accept all major credit cards, including Visa, MasterCard, and American Express. For custom plans, we also support bank transfers.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p class="text-sm font-semibold mb-1">FleetTrack - Affordable Pricing for Every Fleet</p>
+            <p class="text-xs mb-2">&copy; 2025 FleetTrack. All rights reserved.</p>
+            <div class="flex justify-center space-x-6"> <!-- Added space-x-6 for spacing -->
+                <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=token&scope=email%20profile" target="_blank" class="text-orange-500 hover:text-orange-400 transition">
+                    <i class="fab fa-google text-2xl"></i>
+                </a>
+                <a href="https://www.facebook.com" target="_blank" class="text-orange-500 hover:text-orange-400 transition">
+                    <i class="fab fa-facebook text-2xl"></i>
+                </a>
+                <a href="https://www.twitter.com" target="_blank" class="text-orange-500 hover:text-orange-400 transition">
+                    <i class="fab fa-twitter text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle between monthly and annual plans
+        const togglePlans = document.getElementById('toggle-plans');
+        const pricingPlans = document.querySelectorAll('#pricing-plans .price');
+
+        togglePlans.addEventListener('click', () => {
+            togglePlans.classList.toggle('active');
+            const isAnnual = togglePlans.classList.contains('active');
+
+            pricingPlans.forEach(plan => {
+                const price = isAnnual ? plan.getAttribute('data-annually') : plan.getAttribute('data-monthly');
+                plan.textContent = price; // Update only the price, not the description
+            });
+        });
+    </script>
+</body>
+</html>
