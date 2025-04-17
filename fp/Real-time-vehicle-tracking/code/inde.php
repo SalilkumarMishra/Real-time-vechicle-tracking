@@ -775,7 +775,7 @@ if (!isset($_SESSION['user_id'])) {
      <h1 class="text-2xl md:text-3xl font-semibold mb-4">
       Fed up with your current supplier?
       <br/>
-      Switching to Quartix is easy.
+      Switching to FleetTrack is easy.
      </h1>
      <div class="space-y-4 mb-6">
       <div class="bg-black  text-white p-4 flex items-center rounded-2xl">
